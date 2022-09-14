@@ -7,6 +7,7 @@ This is a solution to the [Intro section with dropdown navigation challenge on F
 - [Overview](#overview)
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
+  - [Links](#links)
   - [Built with](#built-with)
   - [Useful resources](#useful-resources)
 
@@ -30,6 +31,11 @@ Users should be able to:
 *Mobile*
 
 ![Mobile Screenshot](/screenshots/mobile-screenshot-375px.PNG)
+
+
+### Links
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/intro-section-with-dropdown-navigation-javascript-css-flexbox-3-XLSMz4Rf)
+- Live Site URL: [Live Site](https://jelenaandelic.github.io/dropdownNavigation/)
 
 
 ### Built with
