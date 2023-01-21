@@ -1,64 +1,70 @@
-let closeButton = document.querySelector(".closeMenu");
-let openButton = document.querySelector(".openMenu");
-let sideBarMenu = document.querySelector("#sideBarNav");
+const nav = document.querySelector(".navigation__bar");
+const navToggle = document.querySelector(".mobile-nav-toggle");
+const linkFeatures = document.getElementById("featuresLink");
+const linkCompany = document.getElementById("companyLink");
+const dropdownFeatures = document.querySelector(
+  ".navigation__dropdown-content--right"
+);
+const dropdownCompany = document.querySelector(
+  ".navigation__dropdown-content--left"
+);
 
-const mq = window.matchMedia("(max-width:375px)");
-const mqL = window.matchMedia("(min-width:376px)");
-const dropdownMenu = document.querySelectorAll(".dropdown");
-const dropdownItem = document.querySelectorAll(".dropdownContent");
+const responsiveDesktop = window.matchMedia("(min-width:600px)");
+const responsiveMobile = window.matchMedia("(max-width:550px)");
 
-openButton.addEventListener("click", () => {
-    sideBarMenu.style.display = "flex";
-    closeButton.style.display = "flex";
-    openButton.style.display = "none";
-})
+navToggle.addEventListener("click", () => {
+  const visiblity = nav.getAttribute("data-visible");
 
-closeButton.addEventListener("click", () => {
-    sideBarMenu.style.display = "none";
-    openButton.style.display = "flex";
-    closeButton.style.display = "none";
+  if (visiblity === "false") {
+    nav.setAttribute("data-visible", true);
+    navToggle.setAttribute("aria-expanded", true);
+  } else {
+    nav.setAttribute("data-visible", false);
+    navToggle.setAttribute("aria-expanded", false);
+  }
+  console.log(visiblity);
+});
 
-})
+if (responsiveMobile.matches) {
+  linkFeatures.addEventListener("click", () => {
+    const visibilityFeatures = dropdownFeatures.getAttribute("data-visible");
 
-if (mq.matches) {
-    for (let i = 0; i < dropdownMenu.length; i++) {
-        dropdownMenu[i].addEventListener("click", function () {
-            dropdownItem[i].classList.toggle("display-block");
-        });
+    if (visibilityFeatures === "false") {
+      dropdownFeatures.setAttribute("data-visible", true);
+      document.getElementById("arrow1").src = "images/icon-arrow-up.svg";
+    } else {
+      dropdownFeatures.setAttribute("data-visible", false);
+      document.getElementById("arrow1").src = "images/icon-arrow-down.svg";
     }
+  });
+
+  linkCompany.addEventListener("click", () => {
+    const visibilityCompany = dropdownCompany.getAttribute("data-visible");
+
+    if (visibilityCompany === "false") {
+      dropdownCompany.setAttribute("data-visible", true);
+      document.getElementById("arrow2").src = "images/icon-arrow-up.svg";
+    } else {
+      dropdownCompany.setAttribute("data-visible", false);
+      document.getElementById("arrow2").src = "images/icon-arrow-down.svg";
+    }
+  });
 }
 
-if (mq.matches) {
-    dropdownMenu[0].addEventListener("click", function () {
-        if (document.getElementById("arrow1").getAttribute("src") == "images/icon-arrow-down.svg") {
-            document.getElementById("arrow1").src = "images/icon-arrow-up.svg";
-        } else {
-            document.getElementById("arrow1").src = "images/icon-arrow-down.svg";
-        }
-    });
-    dropdownMenu[1].addEventListener("click", function () {
-        if (document.getElementById("arrow2").getAttribute("src") == "images/icon-arrow-down.svg") {
-            document.getElementById("arrow2").src = "images/icon-arrow-up.svg";
-        } else {
-            document.getElementById("arrow2").src = "images/icon-arrow-down.svg";
-        }
-    });
-}
+if (responsiveDesktop.matches) {
+  linkFeatures.addEventListener("mouseover", () => {
+    document.getElementById("arrow1").src = "images/icon-arrow-up.svg";
+  });
 
-if (mqL.matches) {
-    dropdownMenu[0].addEventListener("mouseover", function () {
-        document.getElementById("arrow1").src = "images/icon-arrow-up.svg";
-    })
+  linkFeatures.addEventListener("mouseout", () => {
+    document.getElementById("arrow1").src = "images/icon-arrow-down.svg";
+  });
 
-    dropdownMenu[0].addEventListener("mouseout", function () {
-        document.getElementById("arrow1").src = "images/icon-arrow-down.svg";
-    })
+  linkCompany.addEventListener("mouseover", () => {
+    document.getElementById("arrow2").src = "images/icon-arrow-up.svg";
+  });
 
-    dropdownMenu[1].addEventListener("mouseover", function () {
-        document.getElementById("arrow2").src = "images/icon-arrow-up.svg";
-    })
-
-    dropdownMenu[1].addEventListener("mouseout", function () {
-        document.getElementById("arrow2").src = "images/icon-arrow-down.svg";
-    })
+  linkCompany.addEventListener("mouseout", () => {
+    document.getElementById("arrow2").src = "images/icon-arrow-down.svg";
+  });
 }
